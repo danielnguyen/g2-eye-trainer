@@ -30,8 +30,19 @@ function bindPhoneControls(): void {
   root.querySelectorAll<HTMLButtonElement>('[data-action]').forEach((button) => {
     button.addEventListener('click', () => {
       const action = button.dataset.action;
-      if (action === 'start') commit(startGuidedSession(performance.now()));
-      if (action === 'single') commit(startSingle(state, performance.now()));
+      const nowMs = performance.now();
+
+      if (action === 'start') {
+        if (state.screen === 'home' && state.elapsedMs === 0) {
+          commit(startGuidedSession(nowMs));
+          return;
+        }
+
+        commit(toggleRun(state, nowMs));
+        return;
+      }
+
+      if (action === 'single') commit(startSingle(state, nowMs));
       if (action === 'reset') commit(resetHome(state));
     });
   });
