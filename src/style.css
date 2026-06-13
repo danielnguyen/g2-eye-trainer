@@ -1,0 +1,141 @@
+:root {
+  color: #f7f7f7;
+  background: #050505;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1e1e1e, #050505 55%);
+}
+
+button {
+  border: 1px solid #555;
+  border-radius: 999px;
+  background: #151515;
+  color: #f7f7f7;
+  padding: 0.65rem 1rem;
+  font: inherit;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.panel {
+  width: min(760px, 100%);
+  border: 1px solid #333;
+  border-radius: 28px;
+  padding: 1.5rem;
+  background: rgba(10, 10, 10, 0.86);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.45);
+}
+
+.eyebrow,
+.debug,
+.meta,
+.safety {
+  color: #b8b8b8;
+}
+
+h1 {
+  margin: 0.4rem 0 0.3rem;
+  font-size: clamp(2rem, 7vw, 4rem);
+  line-height: 1;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+
+.safety {
+  font-size: 0.95rem;
+}
+
+.viewport {
+  position: relative;
+  height: min(48vh, 360px);
+  margin: 1.25rem 0;
+  border: 1px solid #2b2b2b;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #000;
+}
+
+.dot {
+  --x: 0;
+  --y: 0;
+  position: absolute;
+  left: calc(50% + (var(--x) * 100%));
+  top: calc(50% + (var(--y) * 100%));
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  transition: width 120ms ease, height 120ms ease;
+}
+
+.dot.pulse {
+  width: 26px;
+  height: 26px;
+}
+
+.done-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #ddd;
+  font-size: 2rem;
+}
+
+.progress {
+  height: 8px;
+  border-radius: 999px;
+  background: #222;
+  overflow: hidden;
+}
+
+.progress > div {
+  height: 100%;
+  background: #f7f7f7;
+}
+
+.meta,
+.controls,
+.modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 0.9rem;
+}
+
+.meta {
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.mode.selected {
+  background: #f7f7f7;
+  color: #050505;
+}
+
+.debug {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+}
